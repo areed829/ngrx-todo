@@ -1,4 +1,4 @@
-# To Do App implementing Push Based Architecture
+# To Do App going from Pull Based to Push Based Architecture
 
 This project is meant to show the different steps in adding ngrx into a project and convert from a pull based architecture to a push based
 
