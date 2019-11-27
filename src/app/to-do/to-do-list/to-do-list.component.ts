@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
+import { parseISO, compareAsc } from 'date-fns';
+
 import { take, switchMap, tap, filter } from 'rxjs/operators';
 
 import { ToDoService } from 'src/app/core/to-do.service';
@@ -15,6 +17,7 @@ import { AddTaskComponent } from '../../shared/add-task/add-task.component';
 export class ToDoListComponent implements OnInit {
   bsModalRef: BsModalRef;
   tasks: Task[] = [];
+  completedTasks: Task[] = [];
 
   constructor(
     private todoService: ToDoService,
@@ -22,7 +25,7 @@ export class ToDoListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.todoService.getTasks().subscribe(tasks => (this.tasks = tasks));
+    this.todoService.getTasks().subscribe(tasks => this.setTasks(tasks));
   }
 
   addTask() {
@@ -36,7 +39,7 @@ export class ToDoListComponent implements OnInit {
         filter(task => !!task),
         switchMap((task: Task) => this.todoService.createTask(task)),
         switchMap(() => this.todoService.getTasks()),
-        tap((tasks: Task[]) => (this.tasks = tasks))
+        tap((tasks: Task[]) => this.setTasks(tasks))
       )
       .subscribe();
   }
@@ -46,12 +49,35 @@ export class ToDoListComponent implements OnInit {
       .deleteTask(task.id)
       .pipe(
         switchMap(() => this.todoService.getTasks()),
-        tap(tasks => (this.tasks = tasks))
+        tap(tasks => this.setTasks(tasks))
       )
       .subscribe();
   }
 
+  setTasks(tasks: Task[]) {
+    this.tasks = this.getNonCompletedTasks(tasks).sort((a, b) =>
+      compareAsc(parseISO(a.performBy), parseISO(b.performBy))
+    );
+    this.completedTasks = this.getCompletedTasks(tasks).sort((a, b) =>
+      compareAsc(parseISO(a.performBy), parseISO(b.performBy))
+    );
+  }
+
   taskCompletionToggled(completed: boolean, task: Task) {
-    this.todoService.updateTask({ ...task, completed }).subscribe();
+    this.todoService
+      .updateTask({ ...task, completed })
+      .pipe(
+        switchMap(() => this.todoService.getTasks()),
+        tap(tasks => this.setTasks(tasks))
+      )
+      .subscribe();
+  }
+
+  private getNonCompletedTasks(tasks: Task[]) {
+    return tasks.filter(task => !task.completed);
+  }
+
+  private getCompletedTasks(tasks: Task[]) {
+    return tasks.filter(task => task.completed);
   }
 }

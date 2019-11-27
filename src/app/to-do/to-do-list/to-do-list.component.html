@@ -4,16 +4,34 @@
       <h3 class="text-center">
         Todo List
       </h3>
+
       <button class="btn btn-primary mb-3 mt-4" (click)="addTask()">
         Add Another
       </button>
+
       <ul class="list-group">
-        <li *ngFor="let task of tasks" class="list-group-item">
+        <li
+          *ngFor="let task of tasks"
+          class="list-group-item"
+          [taskInDanger]="task"
+        >
           <to-do-item
             [task]="task"
             (taskCompletetoggled)="taskCompletionToggled($event, task)"
             (delete)="deleteTask(task)"
           ></to-do-item>
+        </li>
+      </ul>
+
+      <h3 class="text-center mt-5 mb-4">Completed</h3>
+      <ul class="list-group">
+        <li *ngFor="let task of completedTasks" class="list-group-item">
+          <to-do-item
+            [task]="task"
+            (taskCompletetoggled)="taskCompletionToggled($event, task)"
+            (delete)="deleteTask(task)"
+          >
+          </to-do-item>
         </li>
       </ul>
     </div>

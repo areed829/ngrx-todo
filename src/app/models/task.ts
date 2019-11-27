@@ -1,6 +1,6 @@
 export interface Task {
   id: string;
   completed: boolean;
-  performBy: Date;
+  performBy: string;
   title: string;
 }

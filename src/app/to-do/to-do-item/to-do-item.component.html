@@ -8,9 +8,10 @@
         (change)="taskCompleteToggle(completionToggle.checked)"
       />
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-5">
       {{ task.title }}
     </div>
+    <div class="col-sm-4">Due By: {{ task.performBy | date: shortDate }}</div>
     <div class="col-sm-2">
       <button class="btn btn-danger float-right" (click)="deleteClicked()">
         Delete

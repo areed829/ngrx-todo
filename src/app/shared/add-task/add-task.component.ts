@@ -64,7 +64,9 @@ export class AddTaskComponent implements OnInit {
   onSubmit() {
     this.addTask.next({
       completed: false,
-      performBy: this.taskForm.get('completeByDate').value,
+      performBy: new Date(
+        this.taskForm.get('completeByDate').value
+      ).toISOString(),
       title: this.taskForm.get('title').value,
       id: null
     });
