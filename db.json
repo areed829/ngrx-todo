@@ -1,7 +1,7 @@
 {
   "tasks": [
     {
-      "completed": true,
+      "completed": false,
       "performBy": "2019-11-22T16:34:00.502Z",
       "title": "Get Phone",
       "id": "9f7c4fb2-6ec3-4bf5-a2f4-c1fc2b2becc3"

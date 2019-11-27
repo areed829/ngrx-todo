@@ -25,7 +25,10 @@
 
       <h3 class="text-center mt-5 mb-4">Completed</h3>
       <ul class="list-group">
-        <li *ngFor="let task of completedTasks" class="list-group-item">
+        <li
+          *ngFor="let task of completedTasks"
+          class="list-group-item list-group-item-light"
+        >
           <to-do-item
             [task]="task"
             (taskCompletetoggled)="taskCompletionToggled($event, task)"
