@@ -1,6 +1,8 @@
-# To Do App implementing Pull Based Architecture
+# To Do App implementing Push Based Architecture
 
 This project is meant to show the different steps in adding ngrx into a project and convert from a pull based architecture to a push based
+
+Eash branch represents the next step. The next branch to go to is actions
 
 ## Development server
 
