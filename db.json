@@ -7,16 +7,16 @@
       "id": "f662a089-0725-4ced-8ece-467e1a82bd87"
     },
     {
-      "peformBy": "11/28/19",
-      "title": "Cook Turkey",
-      "completed": false,
+      "peformBy": "11/29/19",
+      "title": "Watch Ohio State Game",
+      "completed": true,
       "id": "97879b15-c343-47b2-b3c8-79a34cf92d91"
     },
     {
-      "peformBy": "11/29/19",
-      "title": "Watch Ohio State Game",
       "completed": false,
-      "id": "97879b15-c343-47b2-b3c8-79a34cf92d91"
+      "performBy": "2019-11-27T16:34:00.502Z",
+      "title": "Get Phone",
+      "id": "9f7c4fb2-6ec3-4bf5-a2f4-c1fc2b2becc3"
     }
   ]
 }

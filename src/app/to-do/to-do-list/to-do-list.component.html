@@ -4,10 +4,16 @@
       <h3 class="text-center">
         Todo List
       </h3>
-      <ul class="mt-5 list-group">
-        <li *ngFor="let task of tasks$ | async" class="list-group-item">
-          <input type="checkbox" [checked]="task.completed" />
-          {{ task.title }}
+      <button class="btn btn-primary mb-3 mt-4" (click)="addTask()">
+        Add Another
+      </button>
+      <ul class="list-group">
+        <li *ngFor="let task of tasks" class="list-group-item">
+          <to-do-item
+            [task]="task"
+            (taskCompletetoggled)="taskCompletionToggled($event, task)"
+            (delete)="deleteTask(task)"
+          ></to-do-item>
         </li>
       </ul>
     </div>

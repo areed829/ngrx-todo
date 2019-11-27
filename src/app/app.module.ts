@@ -10,6 +10,10 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +32,11 @@ import { HttpClientModule } from '@angular/common/http';
       logOnly: environment.production
     }),
     EffectsModule.forRoot([AppEffects]),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

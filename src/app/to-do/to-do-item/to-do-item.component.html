@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1">
+      <input
+        #completionToggle
+        type="checkbox"
+        [checked]="task.completed"
+        (change)="taskCompleteToggle(completionToggle.checked)"
+      />
+    </div>
+    <div class="col-sm-9">
+      {{ task.title }}
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-danger float-right" (click)="deleteClicked()">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
