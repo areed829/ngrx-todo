@@ -2,7 +2,7 @@
 
 This project is meant to show the different steps in adding ngrx into a project and convert from a pull based architecture to a push based
 
-Eash branch represents the next step. The next branch to go to is selectors
+Eash branch represents the next step. The next branch to go to is effects
 
 ## Development server
 
