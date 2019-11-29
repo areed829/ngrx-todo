@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+
+import * as fromTask from '../store/reducers/task-new.reducer';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 
@@ -10,7 +13,13 @@ import { ToDoItemComponent } from './to-do-item/to-do-item.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, ModalModule, SharedModule, TodoRoutingModule],
+  imports: [
+    CommonModule,
+    ModalModule,
+    SharedModule,
+    TodoRoutingModule,
+    StoreModule.forFeature(fromTask.taskFeatureKey, fromTask.reducer)
+  ],
   declarations: [ToDoListComponent, ToDoItemComponent]
 })
 export class ToDoModule {}

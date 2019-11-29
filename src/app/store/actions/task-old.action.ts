@@ -29,7 +29,7 @@ export class AddTask implements Action {
 }
 
 export class AddTaskFail implements Action {
-  readonly type = ADD_TASK_SUCCESS;
+  readonly type = ADD_TASK_FAIL;
   constructor(public payload: { task: Task; error: any }) {}
 }
 
@@ -48,11 +48,12 @@ export class UpdateTask implements Action {
 
 export class UpdateTaskFail implements Action {
   readonly type = UPDATE_TASK_FAIL;
-  constructor(public payload: { task: Task; error: any }) {}
+  constructor(public payload: { error: any }) {}
 }
 
 export class UpdateTaskSuccess implements Action {
   readonly type = UPDATE_TASK_SUCCESS;
+  constructor(public payload: Task) {}
 }
 
 export const DELETE_TASK = '[Task] Delete Task';
