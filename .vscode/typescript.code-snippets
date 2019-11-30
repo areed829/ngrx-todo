@@ -6,7 +6,9 @@
       "",
       "export class LoadTasks implements Action {",
       "   readonly type = LOAD_TASKS;",
-      "}"
+      "}",
+      "",
+      "${0}"
     ],
     "description": ""
   },
@@ -24,14 +26,16 @@
       "export class LoadTasksSuccess implements Action {",
       "   readonly type = LOAD_TASKS_SUCCESS;",
       "   constructor(public payload: Task[]) {}",
-      "}"
+      "}",
+      "",
+      "${0}"
     ],
     "description": "load tasks the old way"
   },
   "Actions for ngrx talk": {
     "prefix": "ngOldActions",
     "body": [
-      "export const ADD_TASK = '[Task] Add Task';",
+      "${0}export const ADD_TASK = '[Task] Add Task';",
       "export const ADD_TASK_FAIL = '[Task] Add Task Fail';",
       "export const ADD_TASK_SUCCESS = '[Task] Add Task Success';",
       "",
