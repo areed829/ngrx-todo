@@ -11,7 +11,7 @@
 
       <ul class="list-group">
         <li
-          *ngFor="let task of tasks"
+          *ngFor="let task of unCompletedtasks | async"
           class="list-group-item"
           [taskInDanger]="task"
         >
@@ -26,7 +26,7 @@
       <h3 class="text-center mt-5 mb-4">Completed</h3>
       <ul class="list-group">
         <li
-          *ngFor="let task of completedTasks"
+          *ngFor="let task of completedTasks | async"
           class="list-group-item list-group-item-light"
         >
           <to-do-item

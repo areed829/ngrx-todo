@@ -4,28 +4,44 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 import { parseISO, compareAsc } from 'date-fns';
 
-import { take, switchMap, tap, filter } from 'rxjs/operators';
+import { Observable, pipe } from 'rxjs';
+import { take, tap, filter, map } from 'rxjs/operators';
 
-import { ToDoService } from 'src/app/core/to-do.service';
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../store';
+
 import { Task } from 'src/app/models';
 import { AddTaskComponent } from '../../shared/add-task/add-task.component';
+
+const sortTasksByDate = pipe(
+  map((tasks: Task[]) =>
+    tasks.sort((a, b) =>
+      compareAsc(parseISO(a.performBy), parseISO(b.performBy))
+    )
+  )
+);
 
 @Component({
   selector: 'to-do-list',
   templateUrl: 'to-do-list.component.html'
 })
 export class ToDoListComponent implements OnInit {
-  bsModalRef: BsModalRef;
-  tasks: Task[] = [];
-  completedTasks: Task[] = [];
+  unCompletedtasks: Observable<Task[]> = this.store
+    .select(fromStore.getUncompletedTasks)
+    .pipe(sortTasksByDate);
+  completedTasks: Observable<Task[]> = this.store
+    .select(fromStore.getCompletedTasks)
+    .pipe(sortTasksByDate);
+
+  private bsModalRef: BsModalRef;
 
   constructor(
-    private todoService: ToDoService,
+    private store: Store<fromStore.TaskState>,
     private bsModalService: BsModalService
   ) {}
 
   ngOnInit() {
-    this.todoService.getTasks().subscribe(tasks => this.setTasks(tasks));
+    this.store.dispatch(fromStore.LoadTasks());
   }
 
   addTask() {
@@ -37,47 +53,17 @@ export class ToDoListComponent implements OnInit {
       .pipe(
         take(1),
         filter(task => !!task),
-        switchMap((task: Task) => this.todoService.createTask(task)),
-        switchMap(() => this.todoService.getTasks()),
-        tap((tasks: Task[]) => this.setTasks(tasks))
+        tap((task: Task) => this.store.dispatch(fromStore.AddTask({ task })))
       )
       .subscribe();
   }
 
   deleteTask(task: Task) {
-    this.todoService
-      .deleteTask(task.id)
-      .pipe(
-        switchMap(() => this.todoService.getTasks()),
-        tap(tasks => this.setTasks(tasks))
-      )
-      .subscribe();
-  }
-
-  setTasks(tasks: Task[]) {
-    this.tasks = this.getNonCompletedTasks(tasks).sort((a, b) =>
-      compareAsc(parseISO(a.performBy), parseISO(b.performBy))
-    );
-    this.completedTasks = this.getCompletedTasks(tasks).sort((a, b) =>
-      compareAsc(parseISO(a.performBy), parseISO(b.performBy))
-    );
+    this.store.dispatch(fromStore.DeleteTask({ task }));
   }
 
   taskCompletionToggled(completed: boolean, task: Task) {
-    this.todoService
-      .updateTask({ ...task, completed })
-      .pipe(
-        switchMap(() => this.todoService.getTasks()),
-        tap(tasks => this.setTasks(tasks))
-      )
-      .subscribe();
-  }
-
-  private getNonCompletedTasks(tasks: Task[]) {
-    return tasks.filter(task => !task.completed);
-  }
-
-  private getCompletedTasks(tasks: Task[]) {
-    return tasks.filter(task => task.completed);
+    const updatedTask = { ...task, completed };
+    this.store.dispatch(fromStore.UpdateTask({ task: updatedTask }));
   }
 }
