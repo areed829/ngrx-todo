@@ -13,10 +13,18 @@ import * as fromStore from '../../store';
 import { Task } from 'src/app/models';
 import { AddTaskComponent } from '../../shared/add-task/add-task.component';
 
-const sortTasksByDate = pipe(
+const sortTasksByDateAsc = pipe(
   map((tasks: Task[]) =>
     tasks.sort((a, b) =>
       compareAsc(parseISO(a.performBy), parseISO(b.performBy))
+    )
+  )
+);
+
+const sortTasksByDateDesc = pipe(
+  map((tasks: Task[]) =>
+    tasks.sort((a, b) =>
+      compareDesc(parseISO(a.performBy), parseISO(b.performBy))
     )
   )
 );
@@ -28,10 +36,10 @@ const sortTasksByDate = pipe(
 export class ToDoListComponent implements OnInit {
   unCompletedtasks: Observable<Task[]> = this.store
     .select(fromStore.getUncompletedTasks)
-    .pipe(sortTasksByDate);
+    .pipe(sortTasksByDateAsc);
   completedTasks: Observable<Task[]> = this.store
     .select(fromStore.getCompletedTasks)
-    .pipe(sortTasksByDate);
+    .pipe(sortTasksByDateDesc);
 
   private bsModalRef: BsModalRef;
 
