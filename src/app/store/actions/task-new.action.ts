@@ -36,11 +36,11 @@ export const UpdateTaskSuccess = createAction(
 
 // Delete Tasks
 export const DeleteTask = createAction(
-  '[Task Delete Task]',
+  '[Task] Delete Task',
   props<{ task: Task }>()
 );
 export const DeleteTaskFail = createAction(
-  '[Task Delete Task]',
+  '[Task] Delete Task Fail',
   props<{ task: Task; error: any }>()
 );
-export const DeleteTaskSuccess = createAction('[Task Delete Task]');
+export const DeleteTaskSuccess = createAction('[Task] Delete Task Success');
