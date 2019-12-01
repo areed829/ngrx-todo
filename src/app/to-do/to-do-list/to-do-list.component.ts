@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-import { parseISO, compareAsc } from 'date-fns';
+import { parseISO, compareAsc, compareDesc } from 'date-fns';
 
 import { Observable, pipe } from 'rxjs';
 import { take, tap, filter, map } from 'rxjs/operators';
