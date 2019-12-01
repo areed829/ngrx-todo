@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-import { parseISO, compareAsc } from 'date-fns';
+import { parseISO, compareAsc, compareDesc } from 'date-fns';
 
 import { take, switchMap, tap, filter } from 'rxjs/operators';
 
@@ -59,7 +59,7 @@ export class ToDoListComponent implements OnInit {
       compareAsc(parseISO(a.performBy), parseISO(b.performBy))
     );
     this.completedTasks = this.getCompletedTasks(tasks).sort((a, b) =>
-      compareAsc(parseISO(a.performBy), parseISO(b.performBy))
+      compareDesc(parseISO(a.performBy), parseISO(b.performBy))
     );
   }
 

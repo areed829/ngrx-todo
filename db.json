@@ -1,34 +1,52 @@
 {
   "tasks": [
     {
-      "completed": false,
-      "performBy": "2019-11-22T16:34:00.502Z",
-      "title": "Get Phone",
-      "id": "9f7c4fb2-6ec3-4bf5-a2f4-c1fc2b2becc3"
+      "completed": true,
+      "performBy": "2019-12-01T13:14:33.670Z",
+      "title": "create NGRX Project",
+      "id": "dd1d0154-4489-4be3-b10b-fa93312a0768"
+    },
+    {
+      "completed": true,
+      "performBy": "2019-11-20T05:00:00.000Z",
+      "title": "Brainstorm Ideas",
+      "id": "8cf24755-43a3-47ba-b3db-633ff993f53d"
     },
     {
       "completed": false,
-      "performBy": "2019-11-25T17:03:46.824Z",
-      "title": "Created Task",
-      "id": "21babde8-175a-44b8-9e3f-90e8f89b7aa8"
+      "performBy": "2019-12-12T18:21:31.000Z",
+      "title": "Give Talk",
+      "id": "eb573c22-7a68-41f2-88ff-efb54316ccce"
     },
     {
       "completed": false,
-      "performBy": "2019-11-29T22:09:18.000Z",
-      "title": "Sort Task",
-      "id": "7dd3d51f-2023-4fe7-ba91-2a14c173af2c"
+      "performBy": "2019-12-06T18:22:55.000Z",
+      "title": "Create Actions",
+      "id": "2122441d-a7da-4ef6-aeb6-de6ec303704b"
     },
     {
       "completed": false,
-      "performBy": "2019-11-06T00:08:53.000Z",
-      "title": "asdf",
-      "id": "9b737a41-323e-40d8-86e1-2129f8f5a493"
+      "performBy": "2019-12-06T18:23:03.000Z",
+      "title": "Create Reducers",
+      "id": "52d41b3c-016c-45aa-b47c-a5babab38afa"
     },
     {
       "completed": false,
-      "performBy": "2019-12-11T05:00:00.000Z",
-      "title": "sdfesdf",
-      "id": "84c25938-c825-43b5-9f89-4b467237e488"
+      "performBy": "2019-12-06T18:23:13.000Z",
+      "title": "Create Selectors",
+      "id": "635d9ff9-38ad-49e9-aa9f-5ed807d3acf4"
+    },
+    {
+      "completed": false,
+      "performBy": "2019-12-06T18:23:25.000Z",
+      "title": "Create Effects",
+      "id": "4945f75a-91ab-4250-8c30-3e94eb6d34d8"
+    },
+    {
+      "completed": false,
+      "performBy": "2020-01-09T05:00:00.000Z",
+      "title": "Prepare for next talk",
+      "id": "8a4e06f4-ccae-48db-b319-68e1b5160233"
     }
   ]
 }
