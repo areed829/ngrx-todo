@@ -36,7 +36,7 @@ export class ToDoListComponent implements OnInit {
     this.bsModalRef.content.addTask
       .pipe(
         take(1),
-        filter(task => !!task),
+        filter(Boolean),
         switchMap((task: Task) => this.todoService.createTask(task)),
         switchMap(() => this.todoService.getTasks()),
         tap((tasks: Task[]) => this.setTasks(tasks))
