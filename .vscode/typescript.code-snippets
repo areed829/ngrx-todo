@@ -1,40 +1,68 @@
 {
-  "Load Task": {
-    "prefix": "ngAddTask",
+  "Task State": {
+    "prefix": "ngTaskState",
     "body": [
-      "export const ADD_TASK = '[Task] Add Task';",
-      "",
-      "export class AddTask implements Action {",
-      "  readonly type = ADD_TASK;",
-      "  constructor(public payload: Task) {}",
+      "export interface TaskState {",
+      "  tasks: Task[];",
       "}",
+      "",
+      "export const initialState: TaskState = {",
+      "  tasks: [],",
+      "};",
       "",
       "${0}"
     ],
-    "description": ""
+    "description": "Load Task State"
   },
-  "Actions for ngrx talk": {
-    "prefix": "ngRestOfActions",
+  "Reducer Function": {
+    "prefix": "ngReducer",
     "body": [
-      "export const UPDATE_TASK = '[Task] Update Task';",
-      "",
-      "export class UpdateTask implements Action {",
-      " readonly type = UPDATE_TASK;",
-      " constructor(public payload: Task) {}",
-      "}",
-      "export const DELETE_TASK = '[Task] Delete Task';",
-      "",
-      "export class DeleteTask implements Action {",
-      " readonly type = DELETE_TASK;",
-      " constructor(public payload: Task) {}",
-      "}",
-      "",
-      "${0}"
+      "export function reducer(",
+      "  state = initialState,",
+      "  action: fromTaskActions.TaskActions",
+      "): TaskState {",
+      "   ${0}",
+      "}"
     ],
-    "description": "Output reset of actions"
+    "description": "Create Reducer Function"
   },
-  "exportActionTypes": {
-    "prefix": "ngExportActions",
-    "body": ["export type TaskActions = AddTask | UpdateTask | DeleteTask;"]
+  "Create Reducer Switch Statement": {
+    "prefix": "ngReducerSwitch",
+    "body": [
+      "switch (action.type) {",
+      "  case fromTaskActions.ADD_TASK: {",
+      "    return {",
+      "      ...state,",
+      "      tasks: [...state.tasks, action.payload]",
+      "    };",
+      "  }",
+      "  ${0}",
+      "}"
+    ],
+    "description": "Create Reducer Switch Statement"
+  },
+  "Rest of Reducer Function": {
+    "prefix": "ngRestOfReducer",
+    "body": [
+      "${0}case fromTaskActions.UPDATE_TASK: {",
+      "  const tasks = [",
+      "    ...state.tasks.filter(task => task.id !== action.payload.id),",
+      "    action.payload",
+      "  ];",
+      "  return {",
+      "    ...state,",
+      "    tasks",
+      "  };",
+      "}",
+      "case fromTaskActions.DELETE_TASK: {",
+      "  return {",
+      "    ...state,",
+      "    tasks: state.tasks.filter(task => task.id !== action.payload.id)",
+      "  };",
+      "}",
+      "default:",
+      "  return state;"
+    ],
+    "description": "Add the reducer Function"
   }
 }
