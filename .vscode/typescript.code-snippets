@@ -1,68 +1,34 @@
 {
-  "Task State": {
-    "prefix": "ngTaskState",
+  "Task Feature Selector": {
+    "prefix": "ngFeatureSelector",
     "body": [
-      "export interface TaskState {",
-      "  tasks: Task[];",
-      "}",
-      "",
-      "export const initialState: TaskState = {",
-      "  tasks: [],",
-      "};",
+      "export const taskFeatureSelector = createFeatureSelector(taskFeatureKey);",
       "",
       "${0}"
     ],
-    "description": "Load Task State"
+    "description": "Creates the feature selector for tasks"
   },
-  "Reducer Function": {
-    "prefix": "ngReducer",
+  "Task Selector": {
+    "prefix": "ngTaskSelector",
     "body": [
-      "export function reducer(",
-      "  state = initialState,",
-      "  action: fromTaskActions.TaskActions",
-      "): TaskState {",
-      "   ${0}",
-      "}"
-    ],
-    "description": "Create Reducer Function"
+      "export const getTasks = createSelector(",
+      "  taskFeatureSelector,",
+      "  (state: TaskState) => state.tasks",
+      ");",
+      "",
+      "${0}"
+    ]
   },
-  "Create Reducer Switch Statement": {
-    "prefix": "ngReducerSwitch",
+  "Completed and Uncompleted Tasks": {
+    "prefix": "ngCompleted",
     "body": [
-      "switch (action.type) {",
-      "  case fromTaskActions.ADD_TASK: {",
-      "    return {",
-      "      ...state,",
-      "      tasks: [...state.tasks, action.payload]",
-      "    };",
-      "  }",
-      "  ${0}",
-      "}"
-    ],
-    "description": "Create Reducer Switch Statement"
-  },
-  "Rest of Reducer Function": {
-    "prefix": "ngRestOfReducer",
-    "body": [
-      "${0}case fromTaskActions.UPDATE_TASK: {",
-      "  const tasks = [",
-      "    ...state.tasks.filter(task => task.id !== action.payload.id),",
-      "    action.payload",
-      "  ];",
-      "  return {",
-      "    ...state,",
-      "    tasks",
-      "  };",
-      "}",
-      "case fromTaskActions.DELETE_TASK: {",
-      "  return {",
-      "    ...state,",
-      "    tasks: state.tasks.filter(task => task.id !== action.payload.id)",
-      "  };",
-      "}",
-      "default:",
-      "  return state;"
-    ],
-    "description": "Add the reducer Function"
+      "${0}export const getUncompletedTasks = createSelector(getTasks, tasks =>",
+      "  tasks.filter(task => !task.completed)",
+      ");",
+      "",
+      "export const getCompletedTasks = createSelector(getTasks, tasks =>",
+      "  tasks.filter(task => task.completed)",
+      ");"
+    ]
   }
 }
