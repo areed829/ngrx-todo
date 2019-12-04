@@ -29,10 +29,7 @@
       " constructor(public payload: Task) {}",
       "}",
       "",
-      "export type TaskActions =",
-      "| AddTask",
-      "| UpdateTask",
-      "| DeleteTask;"
+      "${0}"
     ],
     "description": "Output reset of actions"
   },
