@@ -2,7 +2,7 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { taskFeatureKey, TaskState } from '../reducers';
 import { compareDesc, parseISO, compareAsc } from 'date-fns';
 import { Task } from '../../models/task';
-// ngFeatureSelector, ngTaskSelector, ngCompleted
+// ngFeatureSelector, ngTaskSelector, ngCompleted, ngCompleteSort
 
 export const taskFeatureSelector = createFeatureSelector(taskFeatureKey);
 
@@ -13,6 +13,10 @@ export const getTasks = createSelector(
 
 export const getUncompletedTasks = createSelector(getTasks, tasks =>
   tasks.filter(task => !task.completed)
+);
+
+export const getCompletedTasks = createSelector(getTasks, tasks =>
+  tasks.filter(task => task.completed)
 );
 
 export const getUncompletedTasksSortedByDate = createSelector(
@@ -26,10 +30,6 @@ export const getUncompletedTasksSortedByDate = createSelector(
           compareAsc(parseISO(a.performBy), parseISO(b.performBy))
         );
   }
-);
-
-export const getCompletedTasks = createSelector(getTasks, tasks =>
-  tasks.filter(task => task.completed)
 );
 
 export const getCompletedTasksSortedByDate = createSelector(

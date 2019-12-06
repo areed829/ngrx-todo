@@ -30,5 +30,35 @@
       "  tasks.filter(task => task.completed)",
       ");"
     ]
+  },
+  "Tasks sorted by props": {
+    "prefix": "ngCompleteSort",
+    "body": [
+      "export const getUncompletedTasksSortedByDate = createSelector(",
+      "  getUncompletedTasks,",
+      "  (tasks: Task[], props: { order: 'desc' | 'asc' }) => {",
+      "    return props.order === 'desc'",
+      "      ? tasks.sort((a, b) =>",
+      "          compareDesc(parseISO(a.performBy), parseISO(b.performBy))",
+      "        )",
+      "      : tasks.sort((a, b) =>",
+      "          compareAsc(parseISO(a.performBy), parseISO(b.performBy))",
+      "        );",
+      "  }",
+      ");",
+      "",
+      "export const getCompletedTasksSortedByDate = createSelector(",
+      "  getCompletedTasks,",
+      "  (tasks: Task[], props: { order: 'desc' | 'asc' }) => {",
+      "    return props.order === 'desc'",
+      "      ? tasks.sort((a, b) =>",
+      "          compareDesc(parseISO(a.performBy), parseISO(b.performBy))",
+      "        )",
+      "      : tasks.sort((a, b) =>",
+      "          compareAsc(parseISO(a.performBy), parseISO(b.performBy))",
+      "        );",
+      "  }",
+      ");"
+    ]
   }
 }
