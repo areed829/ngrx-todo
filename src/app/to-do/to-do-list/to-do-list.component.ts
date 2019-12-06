@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-import { parseISO, compareAsc, compareDesc } from 'date-fns';
-
 import { Store, select } from '@ngrx/store';
 import * as fromStore from '../../store';
 
