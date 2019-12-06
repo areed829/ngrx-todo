@@ -17,8 +17,8 @@ export const getUncompletedTasks = createSelector(getTasks, tasks =>
 
 export const getUncompletedTasksSortedByDate = createSelector(
   getUncompletedTasks,
-  (tasks: Task[], props) => {
-    return props.desc
+  (tasks: Task[], props: { order: 'desc' | 'asc' }) => {
+    return props.order === 'desc'
       ? tasks.sort((a, b) =>
           compareDesc(parseISO(a.performBy), parseISO(b.performBy))
         )
@@ -34,8 +34,8 @@ export const getCompletedTasks = createSelector(getTasks, tasks =>
 
 export const getCompletedTasksSortedByDate = createSelector(
   getCompletedTasks,
-  (tasks: Task[], props) => {
-    return props.desc
+  (tasks: Task[], props: { order: 'desc' | 'asc' }) => {
+    return props.order === 'desc'
       ? tasks.sort((a, b) =>
           compareDesc(parseISO(a.performBy), parseISO(b.performBy))
         )

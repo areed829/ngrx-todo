@@ -15,18 +15,18 @@ export const initialSate: TaskState = {
 
 const taskReducer = createReducer(
   initialSate,
-  on(fromTaskActions.AddTask, (state, { task }) => ({
+  on(fromTaskActions.addTask, (state, { task }) => ({
     ...state,
     tasks: [...state.tasks, task]
   })),
-  on(fromTaskActions.UpdateTask, (state, { task }) => ({
+  on(fromTaskActions.updateTask, (state, { task }) => ({
     ...state,
     tasks: [
       ...state.tasks.filter(currentTask => currentTask.id !== task.id),
       task
     ]
   })),
-  on(fromTaskActions.DeleteTask, (state, { task }) => ({
+  on(fromTaskActions.deleteTask, (state, { task }) => ({
     ...state,
     tasks: state.tasks.filter(currentTask => currentTask.id !== task.id)
   }))
