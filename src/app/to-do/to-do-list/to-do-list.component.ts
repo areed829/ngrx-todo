@@ -42,7 +42,7 @@ export class ToDoListComponent implements OnInit {
         filter(Boolean),
         tap((task: Task) =>
           this.store.dispatch(
-            fromStore.addTask({ task: { ...task, id: new Date().toString() } })
+            fromStore.addTask({ task: { ...task, id: Date.now().toString() } })
           )
         )
       )
