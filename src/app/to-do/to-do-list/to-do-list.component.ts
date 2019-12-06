@@ -42,8 +42,11 @@ export class ToDoListComponent implements OnInit {
       .pipe(
         take(1),
         filter(Boolean),
-        tap(console.log),
-        tap((task: Task) => this.store.dispatch(fromStore.addTask({ task })))
+        tap((task: Task) =>
+          this.store.dispatch(
+            fromStore.addTask({ task: { ...task, id: new Date().toString() } })
+          )
+        )
       )
       .subscribe();
   }
