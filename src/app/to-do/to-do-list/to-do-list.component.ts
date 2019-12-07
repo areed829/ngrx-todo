@@ -31,7 +31,7 @@ export class ToDoListComponent implements OnInit {
 
   ngOnInit() {}
 
-  addTask() {
+  openModal() {
     this.bsModalRef = this.bsModalService.show(AddTaskComponent, {
       ignoreBackdropClick: true
     });
@@ -40,10 +40,13 @@ export class ToDoListComponent implements OnInit {
       .pipe(
         take(1),
         filter(Boolean),
-        map(task => ({ ...task, id: new Date().getTime() })),
-        tap((task: Task) => this.store.dispatch(fromStore.addTask({ task })))
+        tap((task: Task) => this.saveTask(task))
       )
       .subscribe();
+  }
+
+  saveTask(task: Task) {
+    this.store.dispatch(fromStore.addTask({ task }));
   }
 
   deleteTask(task: Task) {
