@@ -28,7 +28,7 @@ export class ToDoListComponent implements OnInit {
     this.todoService.getTasks().subscribe(tasks => this.setTasks(tasks));
   }
 
-  addTask() {
+  openModal() {
     this.bsModalRef = this.bsModalService.show(AddTaskComponent, {
       ignoreBackdropClick: true
     });
@@ -37,9 +37,17 @@ export class ToDoListComponent implements OnInit {
       .pipe(
         take(1),
         filter(Boolean),
-        switchMap((task: Task) => this.todoService.createTask(task)),
+        tap((task: Task) => this.saveTask(task))
+      )
+      .subscribe();
+  }
+
+  saveTask(task) {
+    this.todoService
+      .createTask(task)
+      .pipe(
         switchMap(() => this.todoService.getTasks()),
-        tap((tasks: Task[]) => this.setTasks(tasks))
+        tap(tasks => this.setTasks(tasks))
       )
       .subscribe();
   }
