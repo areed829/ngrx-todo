@@ -6,7 +6,7 @@ import { Store, select } from '@ngrx/store';
 import * as fromStore from '../../store';
 
 import { Observable } from 'rxjs';
-import { take, tap, filter, map } from 'rxjs/operators';
+import { take, tap, filter } from 'rxjs/operators';
 
 import { Task } from 'src/app/models';
 import { AddTaskComponent } from '../../shared/add-task/add-task.component';
