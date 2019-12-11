@@ -28,20 +28,6 @@ export class ToDoListComponent implements OnInit {
     this.todoService.getTasks().subscribe(tasks => this.setTasks(tasks));
   }
 
-  openModal() {
-    this.bsModalRef = this.bsModalService.show(AddTaskComponent, {
-      ignoreBackdropClick: true
-    });
-
-    this.bsModalRef.content.addTask
-      .pipe(
-        take(1),
-        filter(Boolean),
-        tap((task: Task) => this.saveTask(task))
-      )
-      .subscribe();
-  }
-
   saveTask(task) {
     this.todoService
       .createTask(task)
@@ -62,21 +48,31 @@ export class ToDoListComponent implements OnInit {
       .subscribe();
   }
 
-  setTasks(tasks: Task[]) {
-    this.tasks = this.getNonCompletedTasks(tasks).sort((a, b) =>
-      compareAsc(parseISO(a.performBy), parseISO(b.performBy))
-    );
-    this.completedTasks = this.getCompletedTasks(tasks).sort((a, b) =>
-      compareDesc(parseISO(a.performBy), parseISO(b.performBy))
-    );
-  }
-
   taskCompletionToggled(completed: boolean, task: Task) {
     this.todoService
       .updateTask({ ...task, completed })
       .pipe(
         switchMap(() => this.todoService.getTasks()),
         tap(tasks => this.setTasks(tasks))
+      )
+      .subscribe();
+  }
+
+  setTasks(tasks: Task[]) {
+    this.tasks = this.getNonCompletedTasks(tasks);
+    this.completedTasks = this.getCompletedTasks(tasks);
+  }
+
+  openModal() {
+    this.bsModalRef = this.bsModalService.show(AddTaskComponent, {
+      ignoreBackdropClick: true
+    });
+
+    this.bsModalRef.content.addTask
+      .pipe(
+        take(1),
+        filter(Boolean),
+        tap((task: Task) => this.saveTask(task))
       )
       .subscribe();
   }
