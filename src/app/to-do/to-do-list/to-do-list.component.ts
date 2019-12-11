@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
 
 import { Observable } from 'rxjs';
@@ -17,11 +17,11 @@ import { AddTaskComponent } from '../../shared/add-task/add-task.component';
 })
 export class ToDoListComponent implements OnInit {
   bsModalRef: BsModalRef;
-  uncompletedTasks$: Observable<Task[]> = this.store.pipe(
-    select(fromStore.getUncompletedTasksSortedByDate, { order: 'asc' })
+  uncompletedTasks$: Observable<Task[]> = this.store.select(
+    fromStore.getUncompletedTasks
   );
-  completedTasks$: Observable<Task[]> = this.store.pipe(
-    select(fromStore.getCompletedTasksSortedByDate, { order: 'desc' })
+  completedTasks$: Observable<Task[]> = this.store.select(
+    fromStore.getCompletedTasks
   );
 
   constructor(
