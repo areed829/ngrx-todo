@@ -110,6 +110,15 @@
               "devServerTarget": "ngrx-intro:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
@@ -117,6 +126,6 @@
   "defaultProject": "ngrx-intro",
   "cli": {
     "analytics": "fe3f0922-f391-4805-bf30-2bc150cebb02",
-    "defaultCollection": "@ngrx/schematics"
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
