@@ -8,7 +8,7 @@ export class CompletedToDoListComponent implements OnInit {
   @Input() tasks: string[];
 
   @Output() incomplete = new EventEmitter<string>();
-  @Output() delete = new EventEmitter<string>();
+  @Output() deleted = new EventEmitter<string>();
 
   constructor() {}
 
@@ -18,7 +18,7 @@ export class CompletedToDoListComponent implements OnInit {
     this.incomplete.emit(task);
   }
 
-  deleted(task: string) {
-    this.delete.emit(task);
+  delete(task: string) {
+    this.deleted.emit(task);
   }
 }

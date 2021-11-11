@@ -5,15 +5,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   incompleteTasks: string[] = ['First task'];
-  completedTasks: string[] = [];
+  completedTasks: string[] = ['Completed task'];
 
   constructor() {}
 
   ngOnInit() {}
 
-  addTask(todoInput: HTMLInputElement) {
-    this.addToIncomplete(todoInput.value);
-    todoInput.value = '';
+  addTask(task: string) {
+    if (this.validateInput(task)) {
+      this.addToIncomplete(task);
+    }
   }
 
   completeTask(task: string) {
@@ -32,6 +33,16 @@ export class HomeComponent implements OnInit {
   markAsIncompleted(task: string) {
     this.removeFromCompleted(task);
     this.addToIncomplete(task);
+  }
+
+  validateInput(task: string) {
+    return task && !this.duplicateExists(task);
+  }
+
+  private duplicateExists(task: string) {
+    return !![...this.incompleteTasks, ...this.completedTasks].find(
+      (currentTask) => currentTask.localeCompare(task) === 0
+    );
   }
 
   private addToIncomplete(task: string) {

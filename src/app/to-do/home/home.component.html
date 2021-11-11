@@ -1,47 +1,33 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center">To Do</h1>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <div class="form-group border p-3 rounded d-flex">
-              <input
-                type="text"
-                placeholder="Add a Task"
-                class="form-control me-3"
-                (keyup.enter)="addTask(todoInput)"
-                #todoInput
-              />
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="addTask(todoInput)"
-              >
-                Add
-              </button>
-            </div>
+<div class="container">
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <h1>To Do</h1>
+  </div>
+</div>
 
-            <div class="mt-5">
-              <h2 class="text-center">Tasks</h2>
-              <to-do-list
-                (completed)="completeTask($event)"
-                (deleted)="deletedFromTodo($event)"
-                [tasks]="incompleteTasks"
-              ></to-do-list>
-            </div>
+<div class="container">
+  <div fxFlex fxLayout="row" fxLayoutAlign="center">
+    <add-task (addtask)="addTask($event)"></add-task>
+  </div>
+</div>
 
-            <div class="mt-5">
-              <h2 class="text-center">completed Tasks</h2>
-              <completed-to-do-list
-                [tasks]="completedTasks"
-                (incomplete)="markAsIncompleted($event)"
-                (deleted)="deleteFromCompleted($event)"
-              ></completed-to-do-list>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container">
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <h2>Tasks</h2>
+    <to-do-list
+      (completed)="completeTask($event)"
+      (deleted)="deletedFromTodo($event)"
+      [tasks]="incompleteTasks"
+    ></to-do-list>
+  </div>
+</div>
+
+<div class="container">
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <h2>Completed Tasks</h2>
+    <completed-to-do-list
+      [tasks]="completedTasks"
+      (incomplete)="markAsIncompleted($event)"
+      (deleted)="deleteFromCompleted($event)"
+    ></completed-to-do-list>
   </div>
 </div>

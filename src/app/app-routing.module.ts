@@ -10,7 +10,7 @@ const routes: Routes = [
       import('./to-do/to-do.module').then((m) => m.ToDoModule),
   },
   {
-    path: 'todo-ngrx',
+    path: 'ngrx',
     loadChildren: () =>
       import('./to-do-ngrx/to-do-ngrx.module').then((m) => m.ToDoNgrxModule),
   },

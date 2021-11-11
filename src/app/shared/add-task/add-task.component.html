@@ -1,0 +1,13 @@
+<mat-form-field appearance="fill">
+  <mat-label>Add a Task</mat-label>
+  <input matInput (keyup.enter)="addedTask(todoInput)" #todoInput />
+</mat-form-field>
+
+<button
+  type="button"
+  mat-raised-button
+  color="primary"
+  (click)="addedTask(todoInput)"
+>
+  Add
+</button>
