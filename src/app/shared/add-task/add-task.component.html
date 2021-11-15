@@ -1,13 +1,22 @@
-<mat-form-field appearance="fill">
-  <mat-label>Add a Task</mat-label>
-  <input matInput (keyup.enter)="addedTask(todoInput)" #todoInput />
-</mat-form-field>
-
-<button
-  type="button"
-  mat-raised-button
-  color="primary"
-  (click)="addedTask(todoInput)"
->
-  Add
-</button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 offset-col-6">
+      <div class="input-group">
+        <input
+          type="text"
+          (keyup.enter)="addedTask(todoInput)"
+          #todoInput
+          class="form-control"
+          placeholder="Add a Task"
+        />
+        <button
+          type="button"
+          (click)="addedTask(todoInput)"
+          class="btn btn-primary"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

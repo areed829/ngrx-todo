@@ -261,13 +261,6 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-13.0.1.tgz#487bf0711185f95c3d47c883100ed84945352573"
   integrity sha512-GFrAw8qSfZTBiBAWJrDhNbrpW9JpJwdcJpfyvk57KC1Vn9iPFo45qJYFtXIYkxzudr4yl+DoX25kaaCNOiEicw==
 
-"@angular/material@13.0.1":
-  version "13.0.1"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-13.0.1.tgz#aa2eccc83120f502fb24dbbd4ea74f321c053453"
-  integrity sha512-qNm91iolqd0rJDooLK6ii8F7JeIGyzuwNi78EmJpnc5BOxhS0P9tHoh1Z3+Otcn0v0Q9IvisIrX2hzce2wOutA==
-  dependencies:
-    tslib "^2.3.0"
-
 "@angular/platform-browser-dynamic@~13.0.1":
   version "13.0.1"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-13.0.1.tgz#ba9fec893ee6054385502b0ae6d4645b30ce8692"
@@ -1311,6 +1304,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fortawesome/fontawesome-free@^5.15.1":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
+  integrity sha512-eYm8vijH/hpzr/6/1CJ/V/Eb1xQFW2nnUKArb3z+yUWv7HTwj6M7SP957oMjfZjAHU6qpoNc2wQvIxBLWYa/Jg==
+
 "@gar/promisify@^1.0.1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
@@ -1579,10 +1577,15 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.12.tgz#529bc3e73dbb35dd9e90b0a1c83606a9d3264bdb"
   integrity sha512-MGuvYJrPU0HUwqF7LqvIj50RZUX23Z+m583KBygKYUZLlZ88n6w28XRNJRJgsHukLEnLz6w6SvxZoLgbr5wLqQ==
 
-"@types/node@>=10.0.0", "@types/node@~16.11.6":
+"@types/node@>=10.0.0":
   version "16.11.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.6.tgz#6bef7a2a0ad684cf6e90fcfe31cecabd9ce0a3ae"
   integrity sha512-ua7PgUoeQFjmWPcoo9khiPum3Pd60k4/2ZGXt18sm2Slk0W0xZTqt5Y0Ny1NyBiN1EVQ/+FaF9NcY4Qe6rwk5w==
+
+"@types/node@~16.11.7":
+  version "16.11.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.7.tgz#36820945061326978c42a01e56b61cd223dfdc42"
+  integrity sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2455,6 +2458,11 @@ chardet@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
+
+chart.js@^3.1.1:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.6.0.tgz#a87fce8431d4e7c5523d721f487f53aada1e42fe"
+  integrity sha512-iOzzDKePL+bj+ccIsVAgWQehCXv8xOKGbaU2fO/myivH736zcx535PGJzQGanvcSGVOqX6yuLZsN3ygcQ35UgQ==
 
 "chokidar@>=3.0.0 <4.0.0", chokidar@^3.0.0, chokidar@^3.5.1, chokidar@^3.5.2:
   version "3.5.2"
@@ -5280,6 +5288,13 @@ make-fetch-happen@^9.0.1, make-fetch-happen@^9.1.0:
     promise-retry "^2.0.1"
     socks-proxy-agent "^6.0.0"
     ssri "^8.0.0"
+
+mdb-angular-ui-kit@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/mdb-angular-ui-kit/-/mdb-angular-ui-kit-1.5.0.tgz#7737388b6ba321e2a99c7725c5de54b075097223"
+  integrity sha512-eIVLBviBYU+opIVPVJRjtSR/SUX8RmUfblK6HkrOeRGAqsDBFytDMA3oZKrvyPtjyzWMYibXTE9eK9jIFO2eKw==
+  dependencies:
+    tslib "^2.0.0"
 
 media-typer@0.3.0:
   version "0.3.0"

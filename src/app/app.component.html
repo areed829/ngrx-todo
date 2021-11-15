@@ -1,7 +1,35 @@
-<mat-toolbar color="primary" class="mb-5">
+<!-- <mat-toolbar color="primary" class="mb-5">
   <span>NGRX To Do</span>
   <a [routerLink]="['todo', 'home']" mat-button>Basic</a>
   <a [routerLink]="['ngrx', 'home']" mat-button>NGRX It!</a>
-</mat-toolbar>
+</mat-toolbar> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <a class="navbar-brand mt-2 mt-lg-0" [routerLink]="['ngrx', 'home']"
+        >NGRX To Do</a
+      >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            routerLinkActive="active"
+            class="nav-link"
+            [routerLink]="['todo', 'home']"
+            >Basic</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            routerLinkActive="active"
+            class="nav-link"
+            [routerLink]="['ngrx', 'home']"
+            >NGRX It!</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <router-outlet></router-outlet>
