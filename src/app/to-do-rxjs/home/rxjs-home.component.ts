@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { combineLatest, map, Observable, startWith, Subject } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { combineLatest, map, Observable, startWith, Subject, tap } from 'rxjs';
 
 interface RxjsHomeComponentState {
   incompleteTasks: string[];
@@ -9,6 +9,7 @@ interface RxjsHomeComponentState {
 @Component({
   selector: 'selector-name',
   templateUrl: 'rxjs-home.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RxjsHomeComponent implements OnInit {
   incompleteTasks$: Subject<string[]>;
@@ -22,10 +23,9 @@ export class RxjsHomeComponent implements OnInit {
     this.completedTasks$ = new Subject<string[]>();
 
     this.state$ = combineLatest([
-      this.incompleteTasks$,
-      this.completedTasks$,
+      this.incompleteTasks$.pipe(startWith([])),
+      this.completedTasks$.pipe(startWith([])),
     ]).pipe(
-      startWith([[], []]),
       map(([incompleteTasks, completedTasks]) => ({
         incompleteTasks,
         completedTasks,
@@ -72,9 +72,7 @@ export class RxjsHomeComponent implements OnInit {
   }
 
   private removeFromCompleted(task: string, state: RxjsHomeComponentState) {
-    this.incompleteTasks$.next(
-      this.removeFromArray(task, state.completedTasks)
-    );
+    this.completedTasks$.next(this.removeFromArray(task, state.completedTasks));
   }
 
   private removeFromArray(task: string, tasks: string[]) {
@@ -84,9 +82,9 @@ export class RxjsHomeComponent implements OnInit {
   private validateTask(task: string, state: RxjsHomeComponentState) {
     return (
       task &&
-      [...state.incompleteTasks, ...state.completedTasks].find(
+      ![...state.incompleteTasks, ...state.completedTasks].find(
         (currentTask) =>
-          currentTask.localeCompare(currentTask, undefined, {
+          currentTask.localeCompare(task, undefined, {
             sensitivity: 'base',
           }) === 0
       )

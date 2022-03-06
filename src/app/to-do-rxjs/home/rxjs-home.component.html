@@ -9,14 +9,14 @@
       <to-do-list
         (completed)="completeTask($event, state)"
         (deleted)="deletedFromTodo($event, state)"
-        [tasks]="incompleteTasks"
+        [tasks]="state.incompleteTasks"
       ></to-do-list>
 
       <h2 class="text-center mt-5">Completed Tasks</h2>
       <completed-to-do-list
-        [tasks]="completedTasks"
         (incomplete)="markAsIncompleted($event, state)"
         (deleted)="deleteFromCompleted($event, state)"
+        [tasks]="state.completedTasks"
       ></completed-to-do-list>
     </div>
   </div>
