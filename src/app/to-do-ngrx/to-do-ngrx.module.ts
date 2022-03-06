@@ -1,7 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { SharedModule } from '../shared/shared.module';
 import { NgrxHomeComponent } from './home/ngrx-home.component';
+import { taskFeatureKey, taskReducer } from './store';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 const routes: Routes = [
   {
@@ -15,7 +19,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    StoreModule.forFeature(taskFeatureKey, taskReducer),
+    ReactiveComponentModule,
+    RouterModule.forChild(routes),
+    SharedModule,
+  ],
   declarations: [NgrxHomeComponent],
   providers: [],
 })

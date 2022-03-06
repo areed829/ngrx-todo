@@ -1,1 +1,23 @@
-Does this work?
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 offset-3" *ngIf="state$ | ngrxPush as state">
+      <h1 class="text-center">To Do</h1>
+
+      <add-task (addtask)="addTask($event)"></add-task>
+
+      <h2 class="text-center mt-5">Tasks</h2>
+      <to-do-list
+        (completed)="completeTask($event)"
+        (deleted)="deleteTask($event)"
+        [tasks]="state.incompleteTasks"
+      ></to-do-list>
+
+      <h2 class="text-center mt-5">Completed Tasks</h2>
+      <completed-to-do-list
+        (incomplete)="markAsIncompleted($event)"
+        (deleted)="deleteTask($event)"
+        [tasks]="state.completedTasks"
+      ></completed-to-do-list>
+    </div>
+  </div>
+</div>
