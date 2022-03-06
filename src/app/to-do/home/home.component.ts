@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   templateUrl: 'home.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  incompleteTasks: string[] = ['First task'];
-  completedTasks: string[] = ['Completed task'];
+  incompleteTasks: string[] = [];
+  completedTasks: string[] = [];
 
   constructor() {}
 
