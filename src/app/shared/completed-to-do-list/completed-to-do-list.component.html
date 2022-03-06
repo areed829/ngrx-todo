@@ -1,18 +1,14 @@
-<div class="containerk-fluid">
-  <div class="row">
-    <div class="col-12">
-      <to-do-item *ngFor="let task of tasks" [task]="task">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="markAsIncomplete(task)"
-        >
-          Mark as Incomplete
-        </button>
-        <button type="button" class="btn btn-danger" (click)="delete(task)">
-          Delete
-        </button>
-      </to-do-item>
-    </div>
+<to-do-item *ngFor="let task of tasks" [task]="task">
+  <div class="float-end">
+    <button
+      type="button"
+      class="btn btn-secondary me-2"
+      (click)="markAsIncomplete(task)"
+    >
+      Mark as Incomplete
+    </button>
+    <button type="button" class="btn btn-danger" (click)="delete(task)">
+      Delete
+    </button>
   </div>
-</div>
+</to-do-item>

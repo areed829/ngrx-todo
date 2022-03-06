@@ -1,4 +1,8 @@
-<div class="border rounded">
-  <label>{{ task }}</label>
-  <ng-content></ng-content>
+<div class="container-fluid">
+  <div class="row">
+    <div class="border rounded p-3 col-8 offset-2">
+      <label class="fs-4">{{ task }}</label>
+      <ng-content></ng-content>
+    </div>
+  </div>
 </div>
